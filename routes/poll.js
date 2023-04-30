@@ -15,6 +15,10 @@ router.get('/', (req, res) => {
 
 /* POST /poll */
 router.post('/', (req, res) => {
+
+  // sendEmail(req.params.users);  //from the frontend
+  // console.log(req.params.users);
+
   res.send("Add Poll creation submission");
 });
 
