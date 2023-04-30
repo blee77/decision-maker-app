@@ -8,8 +8,20 @@
 const express = require('express');
 const router  = express.Router();
 
-router.get('/', (req, res) => {
-  res.render('users');
-}); 
+//page where user can change password or name, profile
+router.get('/:user_id', (req, res) => {
+  req.session.user_id = req.params.user_id
+  res.redirect('user page');
+});
+
+
+router.get('/logout', (req, res) => {
+  res.render('user logout');
+});
+
+
+
+
+
 
 module.exports = router;
