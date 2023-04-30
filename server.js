@@ -30,13 +30,17 @@ app.use(express.static('public'));
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const pollRoutes = require('./routes/poll');
-const usersRoutes = require('./routes/users');
+const userRoutes = require('./routes/users');
+const voteRoutes = require('./routes/vote');
+const resultRoutes = require('./routes/results');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 app.use('/poll', pollRoutes);
-app.use('/users', usersRoutes);
+app.use('/users', userRoutes);
+app.use('/vote', voteRoutes);
+app.use('/results', resultRoutes);
 // Note: mount other resources here, using the same pattern above
 
 // Home page
