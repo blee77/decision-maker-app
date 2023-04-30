@@ -1,5 +1,5 @@
 header {
-  height: 80px;
+  height: 100px;
   width: 100%;
   color: #55565B;
   background-color: #969FC0;
@@ -20,5 +20,8 @@ header {
 .poll-creation {
   display: flex;
   align-items: flex-end;
+  border:none;
+  padding: none;
+  background-color: #969FC0;
 }
 
