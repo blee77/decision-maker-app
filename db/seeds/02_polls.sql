@@ -1,3 +1,13 @@
-INSERT INTO polls (title, admin_link, submission_link, user_id, expiration_date)
-VALUES ('Favorite Color Poll', 'https://example.com/admin_link', 'https://example.com/submission_link', 1, '2023-05-01'), ('Best Pizza Topping Poll', 'https://example.com/admin_link', 'https://example.com/submission_link', 2, '2023-05-15'), ('Top Vacation Destination Poll', 'https://example.com/admin_link', 'https://example.com/submission_link', 3, '2023-06-01');
+-- INSERT INTO polls (title, admin_link, submission_link, user_id, expiration_date)
+-- VALUES ('Favorite Color Poll', 'https://example.com/admin_link', 'https://example.com/submission_link', 1, '2023-05-01'), ('Best Pizza Topping Poll', 'https://example.com/admin_link', 'https://example.com/submission_link', 2, '2023-05-15'), ('Top Vacation Destination Poll', 'https://example.com/admin_link', 'https://example.com/submission_link', 3, '2023-06-01');
 
+INSERT INTO polls (title, admin_link, submission_link, user_id, expiration_date) VALUES ('Favorite Color Poll', 'https://example.com/color/admin', 'https://example.com/color/submit', 1, '2023-06-01');
+INSERT INTO polls (title, admin_link, submission_link, user_id, expiration_date) VALUES ('Vacation Destination Poll', 'https://example.com/vacation/admin', 'https://example.com/vacation/submit', 2, '2023-07-15');
+INSERT INTO polls (title, admin_link, submission_link, user_id, expiration_date) VALUES ('Favorite Food Poll', 'https://example.com/food/admin', 'https://example.com/food/submit', 3, '2023-08-01');
+INSERT INTO polls (title, admin_link, submission_link, user_id, expiration_date) VALUES ('Movie Genre Poll', 'https://example.com/movie/admin', 'https://example.com/movie/submit', 4, '2023-09-30');
+INSERT INTO polls (title, admin_link, submission_link, user_id, expiration_date) VALUES ('Favorite Music Genre Poll', 'https://example.com/music/admin', 'https://example.com/music/submit', 5, '2023-10-31');
+INSERT INTO polls (title, admin_link, submission_link, user_id, expiration_date) VALUES ('Best TV Show Poll', 'https://example.com/tv/admin', 'https://example.com/tv/submit', 6, '2023-11-15');
+INSERT INTO polls (title, admin_link, submission_link, user_id, expiration_date) VALUES ('Favorite Sports Poll', 'https://example.com/sports/admin', 'https://example.com/sports/submit', 7, '2023-12-31');
+INSERT INTO polls (title, admin_link, submission_link, user_id, expiration_date) VALUES ('Hobby Poll', 'https://example.com/hobby/admin', 'https://example.com/hobby/submit', 8, '2024-01-15');
+INSERT INTO polls (title, admin_link, submission_link, user_id, expiration_date) VALUES ('Career Poll', 'https://example.com/career/admin', 'https://example.com/career/submit', 9, '2024-02-28');
+INSERT INTO polls (title, admin_link, submission_link, user_id, expiration_date) VALUES ('Favorite Animal Poll', 'https://example.com/animal/admin', 'https://example.com/animal/submit', 10, '2024-03-31');
