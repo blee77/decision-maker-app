@@ -8,43 +8,55 @@
 const express = require('express');
 const router  = express.Router();
 
+const pool = require('../db/connection.js');
+
+const { sendEmail } = require('../lib/sendgrid.js');
+
+
 /* GET /poll/createpoll */
 router.get('/createpoll', (req, res) => {
   res.render('createpoll');
 });
 
-/* POST /poll */
-router.post('/', (req, res) => {
 
-  // sendEmail(req.params.users);  //from the frontend
-  // console.log(req.params.users);
 
-  res.send("Add Poll creation submission");
+// Route to retrieve poll results and the corresponding users
+router.get('/results/:id', async(req, res) => {
+  try {
+
+    //What is the data structure? Gives you idea how to write the query what tables will beed to be joined, 2) what do you need to select tables to?
+    const result = await pool.query(`SELECT * FROM results
+
+    JOIN choices ON choices.choice_id = results.choice_id
+    JOIN polls ON polls.poll_id = choices.poll_id
+
+    WHERE choices.poll_id = $1`,
+    [req.params.id]
+
+    );
+    res.json(result.rows);
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
 });
 
-/* GET /poll/sharelink */
-router.get('/sharelink', (req, res) => {
-  res.render('share-link');
+
+
+// Route to add poll results to the database
+router.post('/results', async (req, res) => {
+  try {
+    const results = req.body.results; // assuming the request body contains the poll results in JSON format
+    const user = req.body.user; // assuming the request body also contains the user who submitted the results
+    await pool.query('INSERT INTO poll_results (results, user) VALUES ($1, $2)', [results, user]);
+    sendEmail('brucehlee@yahoo.ca', 'Decision Maker App','Hello How are you?');
+
+    res.sendStatus(200);
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
 });
 
-// /* POST /poll */
-// router.post('/', (req, res) => {
-//   res.send("Add Poll creation submission");
-// });
-
-// /* GET /poll/:pollId */
-// router.get('/:pollId', (req, res) => {
-//   res.send(`render poll ${req.params.pollId}`);
-// });
-
-// /* POST /poll/:pollId/vote */
-// router.post('/:pollId/vote', (req, res) => {
-//   res.send(`render poll ${req.params.pollId}`);
-// });
-
-// /* GET /poll/:pollId/result Admin */
-// router.get('/:pollId/result', (req, res) => {
-//   res.send(`render poll results for Id ${req.params.pollId}`);
-// });
 
 module.exports = router;
