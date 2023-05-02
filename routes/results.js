@@ -9,6 +9,8 @@ const express = require('express');
 const router  = express.Router();
 
 /* GET /results */
+//This will contain the winner and points obtained by each option.
+
 router.get('/', (req, res) => {
   res.render('results');
 });
