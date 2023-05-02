@@ -23,31 +23,29 @@ router.get('/createpoll', (req, res) => {
 router.post('/createpoll', (req, res) => {
   //Insert into polls table
   //Once insertion into poll table is successful , call the send email function.
+  console.log('pollData:', req.body);
+
   sendEmail('brucehlee@yahoo.ca', 'Decision Maker App','Hello How are you? Please click on the link to access the poll : www.example.com');
 
   res.render('createpoll');
 });
 
 
-// Route to retrieve poll results and the corresponding users
-router.get('/results/:id', async(req, res) => {
-  try {
+/* GET /poll/choices */
+router.get('/createchoices/:id', (req, res) => {
+  //Inside the create poll.ejs write a simple form where the user could enter a question and options
+  res.render('createchoices');
+});
 
-    //What is the data structure? Gives you idea how to write the query what tables will beed to be joined, 2) what do you need to select tables to?
-    const result = await pool.query(`SELECT * FROM results
+/* POST /poll/choices */
+router.post('/createpoll', (req, res) => {
+  //Insert into polls table
+  //Once insertion into poll table is successful , call the send email function.
+  console.log('pollData:', req.body);
 
-    JOIN choices ON choices.choice_id = results.choice_id
-    JOIN polls ON polls.poll_id = choices.poll_id
+  sendEmail('brucehlee@yahoo.ca', 'Decision Maker App','Hello How are you? Please click on the link to access the poll : www.example.com');
 
-    WHERE choices.poll_id = $1`,
-    [req.params.id]
-
-    );
-    res.json(result.rows);
-  } catch (error) {
-    console.error(error);
-    res.sendStatus(500);
-  }
+  res.render('createpoll');
 });
 
 
