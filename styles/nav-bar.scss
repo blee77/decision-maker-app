@@ -1,24 +1,23 @@
 header {
   height: 80px;
   width: 100%;
-  color: #55565B;
-  background-color: #969FC0;
+  color: #55565b;
+  background-color: #969fc0;
   padding: 1.5em;
   position: fixed;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: larger;
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.08), 0 2px 4px 0 rgba(0, 0, 0, 0.12)
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.08), 0 2px 4px 0 rgba(0, 0, 0, 0.12);
 }
 
 .nav-bar {
   display: flex;
-  flex-direction:row;
- justify-content: space-between;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .poll-creation {
   display: flex;
   align-items: flex-end;
 }
-

@@ -1,39 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Home Page</title>
 
-<head>
-  <title>Home Page</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta charset="UTF-8" >
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/layout.css" />
+    <link rel="stylesheet" href="/styles/nav-bar.css" />
 
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" />
-  <link rel="stylesheet" href="/styles/main.css" />
-  <link rel="stylesheet" href="/styles/layout.css" />
-  <link rel="stylesheet" href="/styles/nav-bar.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bungee&family=Lobster&family=Poppins:wght@400;700&family=Source+Sans+Pro:ital,wght@0,300;0,600;1,300;1,600&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Lobster&family=Poppins:wght@400;700&family=Source+Sans+Pro:ital,wght@0,300;0,600;1,300;1,600&display=swap" rel="stylesheet">
+    <script src="/vendor/jquery-3.0.0.js"></script>
+    <script defer src="/scripts/app.js"></script>
+  </head>
 
-  <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/app.js"></script>
-</head>
+  <body>
+    <%- include('partials/nav-bar') %>
 
-<body>
-  <%- include('partials/nav-bar') %>
+    <section class="header">
+      <h1>Make group decisions easy for you</h1>
+      <button class="get-started">Get started now!</button>
+    </section>
 
-  <section class="header">
-    <h1>Make group decisions easy for you</h1>
-    <button class="get-started">Get started now!</button>
-  </section>
-
-  <section class="how-to">
-    <h1>How-to</h1>
-    <h2 class="sample-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,</h2>
-  </section>
-</body>
-
+    <section class="how-to">
+      <h1>How-to</h1>
+      <h2 class="sample-text">
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+        ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
+        dis parturient montes, nascetur ridiculus mus. Donec quam felis,
+        ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa
+        quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
+        arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
+        Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras
+        dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend
+        tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac,
+        enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.
+        Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean
+        imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper
+        ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus
+        eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing
+        sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar,
+        hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec
+        vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit
+        amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris
+        sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget
+        bibendum sodales, augue velit cursus nunc,
+      </h2>
+    </section>
+  </body>
 </html>

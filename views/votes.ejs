@@ -1,1 +1,90 @@
-testcode
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Votes</title>
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+  </head>
+  <body>
+    <form method="POST" action="/poll/<%= pollId %>/vote">
+      <ul id="sortable" class="list-group">
+        <% choices.forEach(function(choice) { %>
+        <li class="list-group-item" id="result-order" <%="choice.choice_id" %>
+          "> <%= choice.title %>
+        </li>
+        <% }); %>
+      </ul>
+
+      <ol id="result" class="list-group"></ol>
+      <button id="submit" type="button" class="btn btn-primary mt-3">
+        Submit Result
+      </button>
+    </form>
+  </body>
+
+  <!-- input hiddne input and rank them accordingly -->
+  <script>
+    $(function () {
+      // Make the choices draggable and sortable
+      $("#sortable")
+        .sortable({
+          connectWith: "#result",
+          placeholder: "ui-state-highlight",
+          // update: function (event, ui) {
+          //   updateOrder();
+          // },
+        })
+        .disableSelection();
+
+      // Make the result sortable and droppable
+      $("#result")
+        .sortable({
+          connectWith: "#sortable",
+          placeholder: "ui-state-highlight",
+          // receive: function (event, ui) {
+          //   updateOrder();
+          // },
+        })
+        .disableSelection();
+
+      // Function to update the order
+      // function updateOrder() {
+      //   var result = [];
+      //   console.log($("#result li"));
+      //   $("#result li").each(function () {
+      //     result.push($(this).data("choice_id"));
+      //   });
+      //   $("#result-order").val(JSON.stringify(result));
+      //   console.log(result);
+      // }
+
+      // Handle submit button click
+      // $("#submit").click(function () {
+      //   // Get the order of the result
+      //   //console.log(result);
+      //   //console.log($("#result-order"));
+      //   var resultOrder = JSON.parse($("#result-order").val());
+
+      //   // Submit the result to the server using AJAX
+      //   // $.ajax({
+
+      //   //   method: "POST",
+      //   //   data: { resultOrder: resultOrder },
+      //   //   success: function (response) {
+      //   //     alert(response);
+      //   //   },
+      //   //   error: function (error) {
+      //   //     console.log(error);
+      //   //   },
+      //   // });
+      // });
+    });
+  </script>
+</html>

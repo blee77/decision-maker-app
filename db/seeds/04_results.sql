@@ -4,4 +4,5 @@ VALUES (1, 'John', 1),
        (2, 'Bob', 3),
        (2, 'Samantha', 4),
        (3, 'Mark', 5),
-       (3, 'Emily', 6);
+       (3, 'Emily', 6)
+       ;
