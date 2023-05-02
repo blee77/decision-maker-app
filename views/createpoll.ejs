@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
   <link rel="stylesheet" href="/styles/nav-bar.css" />
+  <link rel="stylesheet" href="/styles/createpoll.css" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,6 +25,36 @@
 
 <body>
   <%- include('partials/nav-bar') %>
+
+<section class="create-your-poll">
+  <form class="create-poll">
+    <h1 class="title">New poll</h1>
+    <h2 class="start-message">Let's create your new poll to start sharing.</h2>
+
+    <h3 class="user-info-message">Input your information below.</h3>
+    <section class="user-info">
+    <input type="text" id="name" name="name" placeholder="Name*">
+    <input type="email" id="email" name="email" placeholder="Email*">
+    </section>
+
+    <input type="text" id="poll-title" name="poll-title" placeholder="Title of your poll*">
+
+    <input type="text" id="first-choice" name="mc1" placeholder="First Choice*">
+
+    <label for="mc1-description">Description:</label>
+    <input type="text" id="mc1-description" name="mc1">
+
+    <input type="text" id="second-choice" name="mc2" placeholder="Second Choice*">
+
+    <label for="mc2-description">Description:</label>
+    <input type="text" id="mc2-description" name="mc2">
+
+    <input type="text" id="third-choice" name="mc3" placeholder="Third Choice">
+
+    <label for="mc1-description">Description:</label>
+    <input type="text" id="mc3-description" name="mc3">
+  </form>
+</section>
 </body>
 
 </html>

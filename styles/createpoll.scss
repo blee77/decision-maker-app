@@ -1,0 +1,104 @@
+.create-your-poll {
+  padding: 200px;
+  margin-top: 200px;
+  margin-bottom:100px;
+  width: 80%;
+  font-size: x-large;
+  background-color: #e4e7f0;
+  font-weight: 400;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.08), 0 2px 4px 0 rgba(0, 0, 0, 0.12)
+}
+
+.create-poll {
+  display: flex;
+  flex-direction: column;
+}
+
+.start-message {
+  font-size: larger;
+  font-weight:400;
+}
+
+.user-info-message {
+  font-size:larger;
+  font-weight:400;
+}
+
+.user-info {
+  padding: 80px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#name {
+  border-bottom-width:4px;
+  border-top: none;
+  border-left: none;
+  border-right:none;
+  background-color: #e4e7f0;
+  border-color: #969FC0;
+  color:#969FC0;
+  opacity:0.9;
+  padding-right: 10em;
+}
+
+#email {
+  border-bottom-width:4px;
+  border-top: none;
+  border-left: none;
+  border-right:none;
+  background-color: #e4e7f0;
+  border-color: #969FC0;
+  color:#969FC0;
+  opacity:0.9;
+  padding-right: 10em;
+}
+
+#poll-title {
+  border-bottom-width:4px;
+  border-top: none;
+  border-left: none;
+  border-right:none;
+  background-color: #e4e7f0;
+  border-color: #969FC0;
+  color:#969FC0;
+  opacity:0.9;
+  padding-right: 10em;
+}
+
+#first-choice {
+  border-bottom-width:4px;
+  border-top: none;
+  border-left: none;
+  border-right:none;
+  background-color: #e4e7f0;
+  border-color: #969FC0;
+  color:#969FC0;
+  opacity:0.9;
+  padding-right: 10em;
+}
+
+#second-choice {
+  border-bottom-width:4px;
+  border-top: none;
+  border-left: none;
+  border-right:none;
+  background-color: #e4e7f0;
+  border-color: #969FC0;
+  color:#969FC0;
+  opacity:0.9;
+  padding-right: 10em;
+}
+
+#third-choice {
+  border-bottom-width:4px;
+  border-top: none;
+  border-left: none;
+  border-right:none;
+  background-color: #e4e7f0;
+  border-color: #969FC0;
+  color:#969FC0;
+  opacity:0.9;
+  padding-right: 10em;
+}
+
