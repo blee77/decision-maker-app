@@ -1,6 +1,7 @@
 // load .env data into process.env
-require('dotenv').config();
+// require('dotenv').config();
 
+const dotenv = require('dotenv').config();
 // Middleware for logging HTTP requests
 // Web server config
 const sassMiddleware = require('./lib/sass-middleware');
@@ -37,7 +38,7 @@ const resultRoutes = require('./routes/results');
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
-app.use('/poll', pollRoutes);
+app.use('/polls', pollRoutes);
 app.use('/users', userRoutes);
 app.use('/vote', voteRoutes);
 app.use('/results', resultRoutes);
