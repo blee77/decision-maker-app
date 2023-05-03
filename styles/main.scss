@@ -19,11 +19,13 @@ body {
 
 .get-started {
   background-color: #B7C0DF;
-  border-color: #B7C0DF;
+  border: 2px solid #B7C0DF;
   color:#55565B;
   font-weight:700;
   padding:1em;
   border-radius: 20px;
+  text-decoration: none;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.08), 0 2px 4px 0 rgba(0, 0, 0, 0.12);
 }
 
 .how-to {
