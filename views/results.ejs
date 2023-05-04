@@ -25,6 +25,30 @@
 
 <body>
   <%- include('partials/nav-bar') %>
+  <div>
+    <br>
+    <br>
+    <br>
+    <% if (results.length !== 0) { %>
+      <h1> Poll Title: <%= results[0].poll_title %> </h1>
+      <table>
+        <tr>
+          <th>Poll ID</th>
+          <th>Choices</th>
+          <th>Results</th>
+        </tr>
+        <% for (let i = 0; i < results.length; i++) { %>
+          <tr>
+            <td> <%= results[i].poll_id %> </td>
+            <td> <%= results[i].choice_title %> </td>
+            <td> <%= results[i].result %> </td>
+          </tr>
+          <% } %>
+        </table>
+      <% } else { %>
+        <h1> Sorry, poll not found. </h1>
+      <% } %>
+  </div>
 </body>
 
 </html>

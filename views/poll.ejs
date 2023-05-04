@@ -30,12 +30,12 @@
     <br>
     <br>
     <% if (typeof poll_id != 'undefined') { %>
-      <h1> ID: <%= poll_id %> </h1>
       <h1> Title: <%= title %> </h1>
-      <h1> Admin Link: <%= admin_link %></h1>
-      <h1> Submission Link: <%= submission_link %></h1>
-      <h1> User ID: <%= user_id %></h1>
-      <h1> Expiration Date: <%= expiration_date %></h1>
+      <p> <b>ID:</b> <%= poll_id %> </p>
+      <p> <b>Admin Link:</b> <%= admin_link %></p>
+      <p> <b>Submission Link:</b> <%= submission_link %></p>
+      <p> <b>User ID:</b> <%= user_id %></p>
+      <p> <b>Expiration Date:</b> <%= expiration_date %></p>
     <% } else { %>
       <h1> Sorry, poll not found. </h1>
     <% } %>

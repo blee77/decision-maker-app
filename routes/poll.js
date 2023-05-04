@@ -19,9 +19,9 @@ router.get('/:id', (req, res) => {
   // console.log('route:poll/id');
   getPollsByID(req.params.id)
   .then((result) => {
-    let poll_object = result[0];
-    // console.log(poll_object);
-    res.render('poll', poll_object);
+    let poll = result[0];
+    // console.log(poll);
+    res.render('poll', poll);
   })
   .catch((reject) => {
     res.render('pageNotFound');
