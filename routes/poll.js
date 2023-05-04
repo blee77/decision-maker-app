@@ -9,8 +9,24 @@ const express = require('express');
 const router  = express.Router();
 
 const pool = require('../db/connection.js');
+const { getPollsByID } = require('../db/queries/poll.js');
 
 const { sendEmail } = require('../lib/sendgrid.js');
+
+/* GET /poll/:id */
+router.get('/:id', (req, res) => {
+  //Inside the create poll.ejs write a simple div to show the results of the get request
+  // console.log('route:poll/id');
+  getPollsByID(req.params.id)
+  .then((result) => {
+    let poll_object = result[0];
+    // console.log(poll_object);
+    res.render('poll', poll_object);
+  })
+  .catch((reject) => {
+    res.render('pageNotFound');
+  });
+});
 
 
 /* GET /poll/createpoll */
@@ -66,3 +82,5 @@ router.post('/results', async (req, res) => {
 
 
 module.exports = router;
+
+
