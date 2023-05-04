@@ -8,6 +8,7 @@
 const express = require("express");
 const router = express.Router();
 const { getChoicesByPollId } = require("../db/queries/vote");
+const { addVoteToResults } = require("../db/queries/results");
 
 /* GET /poll */
 router.get("/", (req, res) => {
@@ -44,17 +45,37 @@ router.get("/:pollId/vote", (req, res) => {
 });
 
 // submit result
-router.post("/poll/:pollId/vote", (req, res) => {
-  const choices = req.body.choices;
-  for (let i = 0; i < choices.length; i++) {
-    const choice = choices[i];
-    const query = {
-      text: "INSERT INTO results (choice_id, name, rank) VALUES ($1, $2, $3)",
-      values: [choice.id, choice.name, choice.rank],
-    };
-    db.query(query).catch((error) => console.log(error));
+// router.post("/:pollId/vote", (req, res) => {
+//   const choices = req.body.choices;
+
+//   console.log(choices);
+//   // for (let i = 0; i < choices.length; i++) {
+//   //   const choice = choices[i];
+//   //   const query = {
+//   //     text: "INSERT INTO results (choice_id, name, rank) VALUES ($1, $2, $3)",
+//   //     values: [choice.id, choice.name, choice.rank],
+//   //   };
+//   //   db.query(query).catch((error) => console.log(error));
+//   // }
+//   res.redirect("/");
+// });
+
+router.post("/:pollId/vote", async (req, res) => {
+  try {
+    //const pollId = req.params.pollId;
+    const choices = req.body.choices;
+    console.log(choices);
+    //Insert the vote data into the results table
+    for (const choice of choices) {
+      await addVoteToResults(choice.choiceId, choice.title, choice.rank);
+    }
+
+    // Redirect to the poll results page
+    res.redirect("/");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error submitting vote");
   }
-  res.redirect("/results");
 });
 
 //router.post("/:pollId/submit", submitResult);
