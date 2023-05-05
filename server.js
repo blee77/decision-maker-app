@@ -1,6 +1,7 @@
 // load .env data into process.env
 require("dotenv").config();
 
+const dotenv = require("dotenv").config();
 // Middleware for logging HTTP requests
 // Web server config
 const sassMiddleware = require("./lib/sass-middleware");

@@ -94,34 +94,71 @@ router.get("/:pollId/result", (req, res) => {
   res.send(`render poll results for Id ${req.params.pollId}`);
 });
 
+const pool = require("../db/connection.js");
+
+const { sendEmail } = require("../lib/sendgrid.js");
+
 /* GET /poll/createpoll */
 router.get("/createpoll", (req, res) => {
+  //Inside the create poll.ejs write a simple form where the user could enter a question and options
   res.render("createpoll");
 });
 
-/* GET /poll/sharelink */
-router.get("/sharelink", (req, res) => {
-  res.render("share-link");
+/* POST /poll/createpoll */
+router.post("/createpoll", (req, res) => {
+  //Insert into polls table
+  //Once insertion into poll table is successful , call the send email function.
+  console.log("pollData:", req.body);
+
+  sendEmail(
+    "brucehlee@yahoo.ca",
+    "Decision Maker App",
+    "Hello How are you? Please click on the link to access the poll : www.example.com"
+  );
+
+  res.render("createpoll");
 });
 
-// /* POST /poll */
-// router.post('/', (req, res) => {
-//   res.send("Add Poll creation submission");
-// });
+/* GET /poll/choices */
+router.get("/createchoices/:id", (req, res) => {
+  //Inside the create poll.ejs write a simple form where the user could enter a question and options
+  res.render("createchoices");
+});
 
-// /* GET /poll/:pollId */
-// router.get('/:pollId', (req, res) => {
-//   res.send(`render poll ${req.params.pollId}`);
-// });
+/* POST /poll/choices */
+router.post("/createpoll", (req, res) => {
+  //Insert into polls table
+  //Once insertion into poll table is successful , call the send email function.
+  console.log("pollData:", req.body);
 
-// /* POST /poll/:pollId/vote */
-// router.post('/:pollId/vote', (req, res) => {
-//   res.send(`render poll ${req.params.pollId}`);
-// });
+  sendEmail(
+    "brucehlee@yahoo.ca",
+    "Decision Maker App",
+    "Hello How are you? Please click on the link to access the poll : www.example.com"
+  );
 
-// /* GET /poll/:pollId/result Admin */
-// router.get('/:pollId/result', (req, res) => {
-//   res.send(`render poll results for Id ${req.params.pollId}`);
-// });
+  res.render("createpoll");
+});
+
+// Route to add poll results to the database
+router.post("/results", async (req, res) => {
+  try {
+    const results = req.body.results; // assuming the request body contains the poll results in JSON format
+    const user = req.body.user; // assuming the request body also contains the user who submitted the results
+    await pool.query(
+      "INSERT INTO poll_results (results, user) VALUES ($1, $2)",
+      [results, user]
+    );
+    sendEmail(
+      "brucehlee@yahoo.ca",
+      "Decision Maker App",
+      "Hello How are you? Please click on the link to access the poll : www.example.com"
+    );
+    res.sendStatus(200);
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
+});
 
 module.exports = router;
