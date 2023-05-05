@@ -9,6 +9,7 @@ const express = require("express");
 const router = express.Router();
 const { getChoicesByPollId } = require("../db/queries/vote");
 const { addVoteToResults } = require("../db/queries/results");
+const { getResultsByPollId } = require("../db/queries/getResultsByPollId");
 
 /* GET /poll */
 router.get("/", (req, res) => {
@@ -24,12 +25,6 @@ router.get("/:pollId", (req, res) => {
   res.send(`render poll ${req.params.pollId}`);
 });
 
-// /* GET /poll/:pollId/vote */
-// router.get("/:pollId/vote", (req, res) => {
-//   const pollId = req.params.pollId;
-//   // use the pollId to render the vote page or perform any other actions
-//   res.render("votes", { pollId: pollId });
-// });
 router.get("/:pollId/vote", (req, res) => {
   const pollId = req.params.pollId;
 
@@ -44,47 +39,56 @@ router.get("/:pollId/vote", (req, res) => {
     });
 });
 
-// submit result
-// router.post("/:pollId/vote", (req, res) => {
-//   const choices = req.body.choices;
-
-//   console.log(choices);
-//   // for (let i = 0; i < choices.length; i++) {
-//   //   const choice = choices[i];
-//   //   const query = {
-//   //     text: "INSERT INTO results (choice_id, name, rank) VALUES ($1, $2, $3)",
-//   //     values: [choice.id, choice.name, choice.rank],
-//   //   };
-//   //   db.query(query).catch((error) => console.log(error));
-//   // }
-//   res.redirect("/");
-// });
-
 router.post("/:pollId/vote", async (req, res) => {
   try {
-    //const pollId = req.params.pollId;
+    const pollId = req.params.pollId;
     const choices = req.body.choices;
-    console.log(choices);
+    //console.log(choices);
     //Insert the vote data into the results table
     for (const choice of choices) {
       await addVoteToResults(choice.choiceId, choice.title, choice.rank);
     }
 
     // Redirect to the poll results page
-    res.redirect("/");
+    //console.log()
+    //http://localhost:8080/poll/3/poll/results
+    res.redirect(`/poll/${pollId}/results`);
   } catch (err) {
     console.error(err);
     res.status(500).send("Error submitting vote");
   }
 });
 
-//router.post("/:pollId/submit", submitResult);
+router.get("/:pollId/results", (req, res) => {
+  //console.log(getResultsByPollId());
+  getResultsByPollId()
+    .then((results) => {
+      //results = ["test"];
+      //console.log(results);
+      //const x = { results };
+      res.render("results", { results });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.send("An error occurred");
+    });
+});
+// router.get("/results", (req, res) => {
+//   // Assuming your results table is defined as a variable called `results`
 
-/* POST /poll/:pollId/vote */
-// router.post("/:pollId/vote", (req, res) => {
-//   res.send(`render poll ${req.params.pollId}`);
+//   // Calculate the winners for food type
+//   const winnersFood = calculateBordaCount(
+//     results.filter((r) => r.choice_id > 6)
+//   );
+
+//   // Calculate the winners for travel destination
+//   const winnersTravel = calculateBordaCount(
+//     results.filter((r) => r.choice_id <= 6)
+//   );
+
+// Render the `results.ejs` template and pass the winners arrays as variables
+//   res.render("results", { winnersFood, winnersTravel });
 // });
-
 /* GET /poll/:pollId/result Admin */
 router.get("/:pollId/result", (req, res) => {
   res.send(`render poll results for Id ${req.params.pollId}`);
