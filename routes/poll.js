@@ -108,15 +108,14 @@ router.get("/createpoll", (req, res) => {
 router.post("/createpoll", (req, res) => {
   //Insert into polls table
   //Once insertion into poll table is successful , call the send email function.
+  // req.session.email = req.body.email;
   console.log("pollData:", req.body);
+  console.log("Test:",req.session);
+  sendEmail(req.body.email, 'Decision Maker App','Hello How are you? Please click on the link to access the poll : www.example.com');
 
-  sendEmail(
-    "brucehlee@yahoo.ca",
-    "Decision Maker App",
-    "Hello How are you? Please click on the link to access the poll : www.example.com"
-  );
+  sendEmail('brucehlee@yahoo.ca', 'Decision Maker App','Hello How are you? Please click on the link to access the poll : www.example.com');
 
-  res.render("createpoll");
+  res.render('createpoll');
 });
 
 /* GET /poll/choices */
