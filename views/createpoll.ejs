@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
-  <link rel="stylesheet" href="/styles/layout.css" />
   <link rel="stylesheet" href="/styles/nav-bar.css" />
   <link rel="stylesheet" href="/styles/createpoll.css" />
 
@@ -20,8 +19,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Lobster&family=Poppins:wght@400;700&family=Source+Sans+Pro:ital,wght@0,300;0,600;1,300;1,600&display=swap" rel="stylesheet">
 
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/users.js"></script>
+
   <script defer src="/scripts/app.js"></script>
+  <script defer src="/scripts/users.js"></script>
 </head>
 
 <body>
@@ -36,7 +36,7 @@
 
     <h2 class="user-info-message">Input your information below.</h2>
 
-    <form class="create-poll">
+    <form method="POST" action="/users/createpoll" class="create-poll" id="create-poll">
 
       <div class="user-info">
     <input type="text" id="name" class="input-field" name="name" placeholder="Name*">
@@ -71,3 +71,5 @@
 </body>
 
 </html>
+
+
