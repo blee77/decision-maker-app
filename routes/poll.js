@@ -86,7 +86,6 @@ router.get("/:pollId/result", (req, res) => {
 });
 
 const pool = require("../db/connection.js");
-
 const { sendEmail } = require("../lib/sendgrid.js");
 
 /* GET /poll/createpoll */
@@ -95,12 +94,12 @@ router.get("/createpoll", (req, res) => {
   res.render("createpoll");
 });
 
-/* POST /poll/createpoll */
-router.post("/createpoll", (req, res) => {
-  //Insert into polls table
-  //Once insertion into poll table is successful , call the send email function.
+// /* POST /poll/createpoll */
+// router.post("/createpoll", (req, res) => {
+//   //Insert into polls table
+//   //Once insertion into poll table is successful , call the send email function.
   // req.session.email = req.body.email;
-  console.log("pollData:", req.body);
+//   console.log("pollData:", req.body);
   console.log("Test:", req.session);
   sendEmail(
     req.body.email,
@@ -114,29 +113,27 @@ router.post("/createpoll", (req, res) => {
     "Hello How are you? Please click on the link to access the poll : www.example.com"
   );
 
-  res.render("createpoll");
-});
+//   res.render("createpoll");
+// });
 
-/* GET /poll/choices */
-router.get("/createchoices/:id", (req, res) => {
-  //Inside the create poll.ejs write a simple form where the user could enter a question and options
-  res.render("createchoices");
-});
+// /* GET /poll/choices */
+// router.get("/createchoices/:id", (req, res) => {
+//   //Inside the create poll.ejs write a simple form where the user could enter a question and options
+//   res.render("createchoices");
+// });
 
-/* POST /poll/choices */
-router.post("/createpoll", (req, res) => {
-  //Insert into polls table
-  //Once insertion into poll table is successful , call the send email function.
-  console.log("pollData:", req.body);
+// /* POST /poll/choices */
+// router.post("/createpoll", (req, res) => {
+//   //Insert into polls table
+//   //Once insertion into poll table is successful , call the send email function.
+//   console.log("pollData:", req.body);
 
-  sendEmail(
+  sendEmail
     "brucehlee@yahoo.ca",
     "Decision Maker App",
     "Hello How are you? Please click on the link to access the poll : www.example.com"
-  );
 
   res.render("createpoll");
-});
 
 // Route to add poll results to the database
 router.post("/results", async (req, res) => {

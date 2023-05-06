@@ -38,10 +38,6 @@ const resultRoutes = require("./routes/results");
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
-app.use('/poll', pollRoutes);
-app.use('/users', userRoutes);
-app.use('/vote', voteRoutes);
-app.use('/results', resultRoutes);
 app.use("/poll", pollRoutes);
 app.use("/users", userRoutes);
 app.use("/vote", voteRoutes);

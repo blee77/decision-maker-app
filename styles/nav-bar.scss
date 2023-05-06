@@ -33,9 +33,6 @@ header {
   align-items: flex-end;
   border: none;
   padding: none;
-  background-color:#969FC0;
-  color: #55565B;
-  text-decoration: none;
   background-color: #969fc0;
   color: #55565b;
 }
@@ -44,6 +41,7 @@ header {
   margin: 0;
   padding: 0;
   width: 60%;
+  text-decoration: none;
 }
 
 #sortable li {

@@ -1,8 +1,8 @@
 const express = require('express');
 const router  = express.Router();
 
-router.get('/createpoll', (req, res) => {
-  res.render('createpoll');
+router.get('/', (req, res) => {
+  res.render('share-link');
 });
 
 module.exports = router;
