@@ -67,10 +67,10 @@ router.post('/createpoll', (req, res) => {
             return res.status(500).send({ error: "Error creating choices" });
           }
 
-          // sendgrid.sendEmail(req.body.email, 'Decision Maker App','Hello How are you? Please click on the link to access the poll : www.example.com');
+          sendgrid.sendEmail(req.body.email, 'Decision Maker App','Hello How are you? Please click on the link to access the poll : www.example.com');
 
           req.session.userId = id;
-          res.render("share-link");
+          res.redirect("share-link");
         })
         .catch((error) => res.send(error));
     })
