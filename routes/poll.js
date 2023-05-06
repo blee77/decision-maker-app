@@ -16,6 +16,12 @@ const pool = require("../db/connection.js");const { getPollsByID } = require('..
 
 const { sendEmail } = require("../lib/sendgrid.js");
 
+/* GET /poll/createpoll */
+router.get("/createpoll", (req, res) => {
+  //Inside the create poll.ejs write a simple form where the user could enter a question and options
+  res.render("createpoll");
+});
+
 /* GET /poll/:id */
 router.get('/:id', (req, res) => {
   //Inside the create poll.ejs write a simple div to show the results of the get request
@@ -31,11 +37,7 @@ router.get('/:id', (req, res) => {
   });
 });
 
-/* GET /poll/createpoll */
-router.get("/createpoll", (req, res) => {
-  //Inside the create poll.ejs write a simple form where the user could enter a question and options
-  res.render("createpoll");
-});
+
 
 // /* GET /poll */
 // router.get("/", (req, res) => {
@@ -78,7 +80,8 @@ router.post("/:pollId/vote", async (req, res) => {
     // Redirect to the poll results page
     //console.log()
     //http://localhost:8080/poll/3/poll/results
-    res.redirect(`/poll/${pollId}/results`);
+    // res.redirect(`/poll/${pollId}/results`);
+    res.render("thank-you");
   } catch (err) {
     console.error(err);
     res.status(500).send("Error submitting vote");

@@ -22,11 +22,6 @@ const getPollResultsByID = (poll_id) => {
     });
 };
 
-module.exports = { getPollResultsByID };
-
-
-const db = require("../connection");
-
 const addVoteToResults = (choiceId, name, rank) => {
   return db
     .query(
@@ -38,4 +33,4 @@ const addVoteToResults = (choiceId, name, rank) => {
     });
 };
 
-module.exports = { addVoteToResults };
+module.exports = { addVoteToResults, getPollResultsByID };

@@ -40,10 +40,17 @@ $("#create-poll").submit(function(event) {
       type: "POST",
       url: "/users/createpoll",
       data: formData,
-    }).then((user) => {
-      console.log("user", user);
-      console.log("User generated with id", user.id);
-    });
+      success: function (response)  {
+        document.location.href=`/poll/${response.poll_id}/sharepoll`;
+      }
+    })
+    // .done((response) => {
+    //   console.log("the response",response);
+    //   //
+    // })
+    // .fail((error) => {
+    //   console.log("error", error)
+    // });
   });
 
   // function createPoll(userId) {

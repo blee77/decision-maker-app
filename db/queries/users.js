@@ -16,7 +16,7 @@ const addUser = (user) => {
     .then((result) => {
       const insertedUser = result.rows[0];
       const jsonUser = {
-        id: insertedUser.id,
+        id: insertedUser.user_id,
         name: insertedUser.name,
         email: insertedUser.email,
       };

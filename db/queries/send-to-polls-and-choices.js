@@ -13,7 +13,7 @@ const addPoll = (poll) => {
       const insertedPoll = result.rows[0];
       console.log("this is the result.rows[]0", insertedPoll);
       const jsonUser = {
-        id: insertedPoll.id,
+        id: insertedPoll.poll_id,
         title: insertedPoll.title,
         admin_link: insertedPoll.admin_link,
         submission_link: insertedPoll.submission_link,

@@ -11,22 +11,11 @@
     <h1>Share Poll</h1>
     <p>
       Link to View your poll result:
-      <a href="#" ,id="admin-link"><%= pollLinks.admin_link %></a>
+      <a href="<%= pollLinks.admin_link %>" ,id="admin-link"><%= pollLinks.admin_link %></a>
     </p>
     <p>
       Share this link with your friends:
-      <a href="#" id="submission-link"><%= pollLinks.submission_link %></a>
+      <a href="/poll/<%= pollLinks.poll_id %>/vote" id="submission-link">/poll/<%= pollLinks.poll_id %>/vote</a>
     </p>
-    <script>
-      // Get the submission link element
-      const submissionLink = document.querySelector("#submission-link");
-      const adminLink = document.querySelector("#admin-link");
-
-      // Add an event listener to the submission link
-      submissionLink.addEventListener("click", () => {
-        // Redirect to the votes page
-        window.location.href = "/poll/<%= pollLinks.poll_id %>/vote";
-      });
-    </script>
   </body>
 </html>

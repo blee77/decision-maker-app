@@ -26,7 +26,6 @@ const sendgrid = require("../lib/sendgrid");
 
 router.post('/createpoll', (req, res) => {
   const { name, email, title, choiceTitle1, choiceDescription1, choiceTitle2, choiceDescription2} = req.body;
-  console.log("#1 req.body", req.body);
 
   dbUser
   .addUser({ name, email })
@@ -38,7 +37,6 @@ router.post('/createpoll', (req, res) => {
       }
 
       const user_id = user.id;
-      console.log("user_id", user_id);
       const admin_link = helpers.generateAdminLink();
       const submission_link = helpers.generateSubmissionLink();
 
@@ -47,36 +45,55 @@ router.post('/createpoll', (req, res) => {
         .then((poll) => {
           if (!poll) {
             console.error("Error creating poll:", error);
-            return res.status(500).send({ error: "Error creating poll" });
+            return res.status(500).json({ error: "Error creating poll" });
           }
 
           const poll_id = poll.id;
 
       dbPoll.addChoice1({ choiceTitle1, choiceDescription1, poll_id })
       .then((choice) => {
-        console.log("this is the first choice",choice);
         if (!choice) {
           console.error("Error creating choices:", error);
-          return res.status(500).send({ error: "Error creating choices" });
+          return res.status(500).json({ error: "Error creating choices" });
         }
 
         dbPoll.addChoice2({ choiceTitle2, choiceDescription2, poll_id })
         .then((choice) => {
           if (!choice) {
             console.error("Error creating choices:", error);
-            return res.status(500).send({ error: "Error creating choices" });
+            return res.status(500).json({ error: "Error creating choices" });
           }
 
-          sendgrid.sendEmail(req.body.email, 'Decision Maker App','Hello How are you? Please click on the link to access the poll : www.example.com');
+          sendgrid.sendEmail(req.body.email,
+            'Decision Maker App',
+`Hello How are you?
 
-          req.session.userId = id;
-          res.redirect("share-link");
+Please click on the link to access the poll results :
+
+http://localhost:8080${admin_link}
+
+You can share this poll with the following link:
+
+http://localhost:8080/poll/${poll_id}/vote`);
+
+          // req.session.userId = id;
+          // res.redirect(`/poll/${poll_id}/sharepoll`);
+          res.status(200).json({poll_id});
         })
-        .catch((error) => res.send(error));
+        .catch((error) => {
+          console.log("error1", error);
+          res.status(500).json(error);
+        });
     })
-    .catch((error) => res.send(error));
+    .catch((error) => {
+      console.log("error2", error);
+      res.status(500).json(error)
+    });
   })
-    .catch((error) => res.send(error));
+    .catch((error) => {
+      console.log("error3", error);
+      res.status(500).json(error)
+    });
 })
 });
 
