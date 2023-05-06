@@ -16,31 +16,6 @@
 //   });
 // });
 
-function generateRandomString() {
-  let characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
-  let stringLength = 6;
-
-  let randomString = "";
-
-  for (let i = 0; i < stringLength; i++) {
-    let randomNumber = Math.floor(Math.random() * characters.length);
-    randomString += characters[randomNumber];
-  }
-  return randomString;
-}
-
-function generateAdminLink() {
-  let uniqueID = generateRandomString();
-  let finalURL = "/results/" + uniqueID;
-  return finalURL;
-}
-
-function generateSubmissionLink() {
-  let uniqueID = generateRandomString();
-  let finalURL = "/vote/" + uniqueID;
-  return finalURL;
-}
-
 $("#create-poll").submit(function(event) {
   event.preventDefault();
 
@@ -51,6 +26,12 @@ $("#create-poll").submit(function(event) {
       name: $("#name").val(),
       email: $("#email").val(),
       title: $("#poll-title").val(),
+      choiceTitle1: $("#first-choice").val(),
+      choiceDescription1: $("#mc1-description").val(),
+      choiceTitle2: $("#second-choice").val(),
+      choiceDescription2: $("#mc2-description").val(),
+      choiceTitle3: $("#third-choice").val(),
+      choiceDescription3: $("#mc3-description").val(),
     };
 
     console.log("this is giving the form data", formData);
@@ -62,28 +43,25 @@ $("#create-poll").submit(function(event) {
     }).then((user) => {
       console.log("user", user);
       console.log("User generated with id", user.id);
-      // createPoll(user.id);
-    }).catch((error) => {
-      console.log("Error generating user:", error);
     });
   });
 
-  function createPoll(userId) {
-    const formData = {
-      title: $("#poll-title").val(),
-      admin_link: generateAdminLink(),
-      submission_link: generateSubmissionLink(),
-      user_id: userId
-    };
+  // function createPoll(userId) {
+  //   const formData = {
+  //     title: $("#poll-title").val(),
+  //     admin_link: generateAdminLink(),
+  //     submission_link: generateSubmissionLink(),
+  //     user_id: userId
+  //   };
 
-    $.ajax({
-      type: "POST",
-      url: "/users/createpoll",
-      data: formData,
-    }).then((poll) => {
-      console.log("Poll generated with id:", poll.id);
-    }).catch((error) => {
-      console.log("Error generating poll:", error);
-    });
+  //   $.ajax({
+  //     type: "POST",
+  //     url: "/users/createpoll",
+  //     data: formData,
+  //   }).then((poll) => {
+  //     console.log("Poll generated with id:", poll.id);
+  //   }).catch((error) => {
+  //     console.log("Error generating poll:", error);
+  // //   });
 
-  };
+  // };

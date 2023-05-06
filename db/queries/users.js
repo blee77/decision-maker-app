@@ -21,6 +21,7 @@ const addUser = (user) => {
         name: insertedUser.name,
         email: insertedUser.email,
       };
+      console.log("#1 jsonUser", jsonUser);
       return jsonUser;
     })
     .catch((err) => {
