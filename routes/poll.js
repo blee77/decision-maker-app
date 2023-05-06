@@ -10,6 +10,7 @@ const router = express.Router();
 const { getChoicesByPollId } = require("../db/queries/vote");
 const { addVoteToResults } = require("../db/queries/results");
 const { getResultsByPollId } = require("../db/queries/getResultsByPollId");
+const { getPollLinkById } = require("../db/queries/getPollLink");
 
 /* GET /poll */
 router.get("/", (req, res) => {
@@ -73,22 +74,12 @@ router.get("/:pollId/results", (req, res) => {
       res.send("An error occurred");
     });
 });
-// router.get("/results", (req, res) => {
-//   // Assuming your results table is defined as a variable called `results`
 
-//   // Calculate the winners for food type
-//   const winnersFood = calculateBordaCount(
-//     results.filter((r) => r.choice_id > 6)
-//   );
-
-//   // Calculate the winners for travel destination
-//   const winnersTravel = calculateBordaCount(
-//     results.filter((r) => r.choice_id <= 6)
-//   );
-
-// Render the `results.ejs` template and pass the winners arrays as variables
-//   res.render("results", { winnersFood, winnersTravel });
-// });
+router.get("/:pollId/sharepoll", async (req, res) => {
+  const pollId = req.params.pollId;
+  const pollLinks = await getPollLinkById(pollId);
+  res.render("sharePoll", { pollLinks });
+});
 /* GET /poll/:pollId/result Admin */
 router.get("/:pollId/result", (req, res) => {
   res.send(`render poll results for Id ${req.params.pollId}`);
@@ -110,12 +101,20 @@ router.post("/createpoll", (req, res) => {
   //Once insertion into poll table is successful , call the send email function.
   // req.session.email = req.body.email;
   console.log("pollData:", req.body);
-  console.log("Test:",req.session);
-  sendEmail(req.body.email, 'Decision Maker App','Hello How are you? Please click on the link to access the poll : www.example.com');
+  console.log("Test:", req.session);
+  sendEmail(
+    req.body.email,
+    "Decision Maker App",
+    "Hello How are you? Please click on the link to access the poll : www.example.com"
+  );
 
-  sendEmail('brucehlee@yahoo.ca', 'Decision Maker App','Hello How are you? Please click on the link to access the poll : www.example.com');
+  sendEmail(
+    "brucehlee@yahoo.ca",
+    "Decision Maker App",
+    "Hello How are you? Please click on the link to access the poll : www.example.com"
+  );
 
-  res.render('createpoll');
+  res.render("createpoll");
 });
 
 /* GET /poll/choices */
