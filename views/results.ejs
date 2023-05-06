@@ -1,13 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Results</title>
+    <%- include('partials/nav-bar') %>
+  </head>
 
+  <body>
+    <p></p>
+    <p></p>
+    <p></p>
+    <!-- views/results.ejs -->
+    <h1>All Poll Results</h1>
 
-<body>
-  <%- include('partials/nav-bar') %>
-
-  <div class="view-results">
-    <h1>Here are your poll results.</h1>
-</div>
-</body>
-
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Created By</th>
+          <th>Rank</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% results.forEach((result) => { %>
+        <tr>
+          <td><%= result.title %></td>
+          <td><%= result.name %></td>
+          <td><%= result.rank %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </body>
 </html>

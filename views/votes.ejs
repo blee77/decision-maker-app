@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Vote</title>
+    <%- include('partials/nav-bar') %>
+  </head>
+  <body>
+    <p></p>
+    <p></p>
+    <p></p>
+
+    <!-- vote.ejs -->
+    <div>
+      <h1>Vote on Choices</h1>
+
+      <p>Drag and drop the choices to rank them in order of preference:</p>
+
+      <form method="POST" action="/poll/<%= pollId %>/vote">
+        <ul id="sortable">
+          <% for (let i = 0; i < choices.length; i++) { %>
+          <li
+            class="ui-state-default"
+            data-choice-id="<%= choices[i].choice_id %>"
+          >
+            <span class="rank"></span>
+            <%= choices[i].title %>
+            <input
+              type="hidden"
+              name="choices[<%= i %>][choiceId]"
+              value="<%= choices[i].choice_id %>"
+            />
+
+            <input
+              type="hidden"
+              name="choices[<%= i %>][title]"
+              value="<%= choices[i].title %>"
+            />
+            <input
+              type="hidden"
+              name="choices[<%= i %>][rank]"
+              value="<%= i + 1 %>"
+            />
+            <% } %>
+          </li>
+        </ul>
+
+        <button type="submit">Submit Vote</button>
+      </form>
+    </div>
+    <script>
+      $(function () {
+        // Initialize the sortable list
+        $("#sortable").sortable({
+          update: function (event, ui) {
+            updateRank();
+          },
+        });
+
+        // Update the rank numbers
+        function updateRank() {
+          $("#sortable li").each(function (index) {
+            var rankInput = $(this).find("input[name$='[rank]']");
+            rankInput.val(index + 1);
+            $(this).find(".rank").text(rankInput.val());
+          });
+        }
+        // Set the initial rank numbers
+        updateRank();
+      });
+    </script>
+  </body>
+</html>

@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Vote</title>
+    <%- include('partials/nav-bar') %>
+  </head>
 
-<body>
-  <%- include('partials/nav-bar') %>
+  <body>
+    <form class="create-poll" method="POST" action="/vote">
+      <div>
+        <input type="text" name="title" placeholder="Enter your name" />
+      </div>
+      <div>
+        <input type="email" name="email" id="" placeholder="Enter your email" />
+      </div>
 
+      <div id="choices"></div>
+
+      <button type="submit">Submit</button>
+    </form>
+    <!--
   <form class="create-poll" method="POST" action="/vote">
     <button>Submit</button>
-  </form>
-
-</body>
-
+  </form> -->
+  </body>
 </html>
