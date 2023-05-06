@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS results CASCADE;
-CREATE TABLE "results" (
-  "result_id" SERIAL,
-  "choice_id" INT,
+CREATE TABLE results (
+  id SERIAL,
+  choice_id INT,
   "name" VARCHAR(255) NOT NULL,
   "rank" INT,
   PRIMARY KEY ("result_id"),

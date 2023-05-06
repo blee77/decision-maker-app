@@ -1,49 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <title>Users</title>
-
-  <meta charset="UTF-8" >
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" />
-  <link rel="stylesheet" href="/styles/main.css" />
-  <link rel="stylesheet" href="/styles/layout.css" />
-  <link rel="stylesheet" href="/styles/nav-bar.css" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Lobster&family=Poppins:wght@400;700&family=Source+Sans+Pro:ital,wght@0,300;0,600;1,300;1,600&display=swap" rel="stylesheet">
-
-  <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/users.js"></script>
-  <script defer src="/scripts/app.js"></script>
-</head>
-
 <body>
 
   <%- include('partials/nav-bar') %>
 
+<div class="create-your-poll">
 
-  <form class="create-poll" method="POST" action="/polls/createpoll">
-    <div>
-      <input type="text" name="title" placeholder="Enter your name" >
+    <h1 class="title">New poll</h1>
+
+    <h2 class="start-message">Let's create your new poll to start sharing.</h2>
+
+    <h2 class="user-info-message">Input your information below.</h2>
+
+    <form method="POST" action="/users/createpoll" class="create-poll" id="create-poll">
+
+      <div class="user-info">
+    <input type="text" id="name" class="input-field" name="name" placeholder="Name*">
+    <input type="email" id="email" class="input-field" name="email" placeholder="Email*">
+
+      </div>
+
+      <div class="poll-info">
+    <input type="text" id="poll-title" class="input-field" name="poll-title" placeholder="Title of your poll*">
+
+    <input type="text" id="first-choice" class="input-field" name="mc1" placeholder="First Choice*">
+
+    <input type="text" id="mc1-description" class="input-field" name="mc1" placeholder="Description (optional)">
+
+    <input type="text" id="second-choice" class="input-field" name="mc2" placeholder="Second Choice*">
+
+    <input type="text" id="mc2-description" class="input-field" name="mc2" placeholder="Description (optional)">
+
+    <input type="text" id="third-choice" class="input-field" name="mc3" placeholder="Third Choice">
+
+    <input type="text" id="mc3-description" class="input-field" name="mc3" placeholder="Description (optional)">
+     </div>
+
+     <div class="submission">
+    <button id="submit-button" type="submit">Submit</button>
     </div>
-    <div>
-      <input type="email" name="email" id="" placeholder="Enter your email">
-    </div>
 
-    <!-- <div>
-      <button id="add-choice-btn">Add Choice</button>
-    </div> -->
-
-    <div id="choices"></div>
-
-    <button type="submit">Submit</button>
   </form>
+
+</div>
+
 </body>
 
 </html>
+
+
