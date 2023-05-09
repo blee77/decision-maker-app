@@ -1,4 +1,66 @@
-# LHL Node Skeleton
+# Decision Maker App Midterm Project
+
+The Decision Maker web app is designed to help groups of friends vote on preferred choices, such as which movie to watch. 
+
+The app allows users to create a poll with multiple choices, each with a title and optional description, and requires the creator to enter an email. 
+
+Once the poll is created, the user receives two links: an administrative link to access the results and a submission link to share with friends. 
+
+Users who visit the submission link can rank the choices using drag and drop or another method, and then submit the poll. 
+
+Each time a submission is received, the creator is notified via email (SendGrid Email System), which includes the administrative link and a link to the results. The app uses the Borda Count method to rank the results, and voters don't need to register or log in to participate.
+
+## Final Product
+
+# Screenshots
+
+!["Screenshot of Front page"](docs/Frontpage.png)
+
+
+!["Screenshot of Create Poll page"](docs/CreatePoll1.png)
+
+
+!["Screenshot of Create Poll page"](docs/CreatePoll2.png)
+
+
+!["Screenshot of Rank Choices by Drag and Drop page"](docs/Rank_Choices.png)
+
+!["Screenshot of Administrative and Submission Link page"](docs/Links.png)
+
+!["Screenshot of Poll Results page"](docs/Results.png)
+
+
+!["Screenshot of Thank you page"](docs/Thank_you.png)
+
+
+
+!["Screenshot of Polls sent to email by SendGrid Email System page"](docs/Sendgrid1.png)
+
+
+!["Screenshot of Polls sent to email by SendGrid Email System page"](docs/Sendgrid2.png)
+
+
+
+
+## SEND GRID API KEY 
+
+The SEND GRID API KEY can be found in the .env file.
+
+
+-Instead of using Mailgun, we integrated SendGrid, an online service that helps similarly with email delivery. 
+
+-SendGrid is a widely used tool among developers to add email functionality to their applications.
+
+-In the Decision Maker app, we used SendGrid to send important links and notifications to poll creators and participants. 
+
+-The code uses a function called sendEmail to create the email message with the necessary parameters including the SendGrid API key, which then uses the SendGrid's sgMail.send() method and returns a Promise that resolves when the email is successfully sent,
+or  rejects when an error occurs when sending out the message.  
+
+-Overall, SendGrid provided us with reliable and efficient email notifications. 
+
+
+
+## Getting Started - Using the LHL Node Skeleton
 
 ## Project Setup
 
@@ -46,3 +108,4 @@ The following steps are only for _one_ of the group members to perform.
 - Node 10.x or above
 - NPM 5.x or above
 - PG 6.x
+
